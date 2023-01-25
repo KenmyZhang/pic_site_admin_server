@@ -7,6 +7,9 @@
 基于当前流行技术组合的前后端图片系统(包含了go后端、后台vue前端)：
 Gin+Gorm+Casbin+Jwt+Redis+Mysql8+Vue 
 
+#### 后端页面代码
+
+	https://github.com/KenmyZhang/pic_site_admin_vue
 
 
 #### 详细结构
