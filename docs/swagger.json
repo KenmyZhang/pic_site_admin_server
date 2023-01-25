@@ -1,0 +1,1121 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "gin-shop商城后台管理系统",
+        "title": "gin-shop  API",
+        "termsOfService": "https://gitee.com/guchengwuyue/gin-shop",
+        "contact": {},
+        "license": {
+            "name": "apache2"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "description": "发布文章",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "文章修改",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "公众号服务",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "用户删除",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/:id": {
+            "get": {
+                "description": "获取单个角色",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "角色ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "文章删除",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/addOrSave": {
+            "post": {
+                "description": "商品添加",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/login": {
+            "post": {
+                "description": "注册",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/question/add": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "新增问题",
+                "parameters": [
+                    {
+                        "description": "报色单下单参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.qcAddRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/question/all": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "问题列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "分类id",
+                        "name": "categoryId",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "pageIndex",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页条数",
+                        "name": "pageSize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "总数",
+                        "name": "totalCount",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/question/del/:id": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "删除问题",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/question/put": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "问题修改",
+                "parameters": [
+                    {
+                        "description": "报色单下单参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.qcPutRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/questionCategory/add": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "新增分类",
+                "parameters": [
+                    {
+                        "description": "报色单下单参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.QCCAdd"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/questionCategory/all": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "分类列表",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "页码",
+                        "name": "pageIndex",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "每页条数",
+                        "name": "pageSize",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "总数",
+                        "name": "totalCount",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/admin.qccAllResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/questionCategory/del/:id": {
+            "delete": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "删除问题分类",
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/admin/questionCategory/put": {
+            "put": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "问题分类相关"
+                ],
+                "summary": "修改分类",
+                "parameters": [
+                    {
+                        "description": "报色单下单参数",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/admin.QCCUpdate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "成功",
+                        "schema": {
+                            "$ref": "#/definitions/app.BaseResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address": {
+            "get": {
+                "description": "获取列表数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/default/set": {
+            "post": {
+                "description": "设置默认地址",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/del": {
+            "post": {
+                "description": "设置默认地址",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/edit": {
+            "post": {
+                "description": "添加or更新地址",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cart/add": {
+            "post": {
+                "description": "添加购物车",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cart/count": {
+            "get": {
+                "description": "获取数量",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cart/num": {
+            "post": {
+                "description": "修改购物车数量",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/carts": {
+            "get": {
+                "description": "购物车列表数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/category": {
+            "get": {
+                "description": "获取树形数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/city_list": {
+            "get": {
+                "description": "获取树形数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/collect/add": {
+            "post": {
+                "description": "添加收藏",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/collect/del": {
+            "post": {
+                "description": "取消收藏",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/collect/user": {
+            "get": {
+                "description": "获取用户收藏",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/getCanvas": {
+            "get": {
+                "description": "获取画布数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order": {
+            "get": {
+                "description": "获取列表数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/cancel": {
+            "post": {
+                "description": "未支付订单取消",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/comments/:key": {
+            "post": {
+                "description": "订单评价",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/confirm": {
+            "post": {
+                "description": "订单确认",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/detail/:key": {
+            "get": {
+                "description": "订单详情",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/notify": {
+            "post": {
+                "description": "订单移步支付",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/pay": {
+            "post": {
+                "description": "订单支付",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/take": {
+            "post": {
+                "description": "订单收货",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/product/detail/:id": {
+            "get": {
+                "description": "获取商品详情",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/product/hot": {
+            "get": {
+                "description": "获取推荐商品",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "description": "获取商品列表数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/reply/list/:id": {
+            "get": {
+                "description": "获取商品评论列表数据",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/userinfo": {
+            "get": {
+                "description": "获取用户信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/build": {
+            "get": {
+                "description": "菜单构建",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/captcha": {
+            "get": {
+                "description": "获取验证码",
+                "responses": {}
+            }
+        },
+        "/center": {
+            "put": {
+                "description": "用户修改个人信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/info": {
+            "get": {
+                "description": "获取用户信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/info/:id": {
+            "get": {
+                "description": "获取商品信息",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/isFormatAttr/:id": {
+            "post": {
+                "description": "商品sku生成",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "delete": {
+                "description": "退出登录",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/menu": {
+            "put": {
+                "description": "角色菜单更新",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/onsale/:id": {
+            "post": {
+                "description": "商品上下架",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/register/verity": {
+            "post": {
+                "description": "短信验证码",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/save/:id": {
+            "post": {
+                "description": "商品规格sku添加",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/tree": {
+            "get": {
+                "description": "菜单树形",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/updateAvatar": {
+            "post": {
+                "description": "用户上传图像",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/updatePass": {
+            "post": {
+                "description": "用户修改密码",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/upload": {
+            "post": {
+                "description": "上传图像",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/app.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "admin.QCCAdd": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "分类名称",
+                    "type": "string"
+                }
+            }
+        },
+        "admin.QCCUpdate": {
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "properties": {
+                "id": {
+                    "description": "分类id",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "分类名称",
+                    "type": "string"
+                }
+            }
+        },
+        "admin.qcAddRequest": {
+            "type": "object",
+            "required": [
+                "answer",
+                "categoryId",
+                "title"
+            ],
+            "properties": {
+                "answer": {
+                    "description": "问题回答",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "分类id",
+                    "type": "integer"
+                },
+                "categoryName": {
+                    "description": "分类名称",
+                    "type": "string"
+                },
+                "sortOrder": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "问题标题",
+                    "type": "string"
+                }
+            }
+        },
+        "admin.qcPutRequest": {
+            "type": "object",
+            "required": [
+                "answer",
+                "categoryId",
+                "id",
+                "title"
+            ],
+            "properties": {
+                "answer": {
+                    "description": "问题回答",
+                    "type": "string"
+                },
+                "categoryId": {
+                    "description": "分类id",
+                    "type": "integer"
+                },
+                "categoryName": {
+                    "description": "分类名称",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "需要修改的问题id",
+                    "type": "integer"
+                },
+                "sortOrder": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "问题标题",
+                    "type": "string"
+                }
+            }
+        },
+        "admin.qccAllResponse": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "content": {
+                            "description": "列表数据",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.YshopQuestionCategory"
+                            }
+                        },
+                        "extendData": {},
+                        "totalElements": {
+                            "description": "总数量",
+                            "type": "integer"
+                        }
+                    }
+                },
+                "msg": {
+                    "description": "提示信息",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "状态码",
+                    "type": "integer"
+                }
+            }
+        },
+        "app.BaseResponse": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "description": "提示信息",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "状态码",
+                    "type": "integer"
+                }
+            }
+        },
+        "app.Response": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "msg": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                }
+            }
+        },
+        "models.Keyword": {
+            "type": "object",
+            "properties": {
+                "keyword": {
+                    "description": "关键字搜索",
+                    "type": "string"
+                }
+            }
+        },
+        "models.YshopQuestionCategory": {
+            "type": "object",
+            "properties": {
+                "ParentId": {
+                    "description": "父类id",
+                    "type": "integer"
+                },
+                "bannerUrl": {
+                    "description": "banner图url",
+                    "type": "string"
+                },
+                "children": {
+                    "description": "子分类信息",
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/models.YshopQuestionCategory"
+                    }
+                },
+                "createTime": {
+                    "description": "创建时间",
+                    "type": "string"
+                },
+                "desc": {
+                    "description": "分类描述",
+                    "type": "string"
+                },
+                "iconUrl": {
+                    "description": "图标url",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "主键id",
+                    "type": "integer"
+                },
+                "imgUrl": {
+                    "description": "分类图片url",
+                    "type": "string"
+                },
+                "isDel": {
+                    "description": "删除标签 0 未删除 1 已删除",
+                    "type": "integer"
+                },
+                "isShow": {
+                    "description": "是否展示， 1：展示（默认）  2：不展示",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "分类名称",
+                    "type": "string"
+                },
+                "sortOrder": {
+                    "description": "排序",
+                    "type": "integer"
+                },
+                "updateTime": {
+                    "description": "更新时间",
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

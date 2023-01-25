@@ -1,0 +1,53 @@
+server:
+  run-mode: 'debug'
+  http-port: 8000
+  read-timeout: 60
+  write-timeout: 60
+app:
+  page-size: 10
+  jwt-secret: go-mall
+  prefix-url: 'https://admin.kimways.com'
+  runtime-root-path: 'runtime/'
+  image-save-path: 'upload/images/'
+  # MB
+  image-max-size: 5242880
+  image-allow-exts: ['.jpg','.jpeg','.png']
+  export-save-path: 'export/'
+  qrcode-save-path: 'qrcode/'
+  font-save-path: 'fonts/'
+  log-save-path: 'logs/'
+  Log-save-name: 'log'
+  Log-file-ext: 'log'
+  time-format: 20060102
+
+database:
+  type: 'mysql'
+  user: 'debian-sys-maint'
+  password: 'EVY4347LjtTudHuS'
+  host: '127.0.0.1:3306'
+  name: 'e_commerce'
+  table_prefix:
+
+redis:
+  host: '127.0.0.1:6379'
+  password:
+  max_idle: 30
+  max_active: 30
+  idle_timeout: 200
+
+zap:
+  log-filepath: 'runtime/logs'
+  log-info-filename: 'info'
+  log-warn-filename: 'warn'
+  log-fiile-ext: 'log'
+
+wechat:
+  app_id:
+  app_secret:
+  token: yshop-gin
+  encoding_aes_key:
+
+express:
+  eBusinessId: "test1782878"
+  appKey: "e1acf647-1c69-45fc-b626-ef377edc33d6"
+  requestUrl: "http://sandboxapi.kdniao.com:8080/kdniaosandbox/gateway/exterfaceInvoke.json"
